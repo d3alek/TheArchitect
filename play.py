@@ -28,7 +28,7 @@ def playMain():
         # detect key presses    
         keyPresses = pygame.key.get_pressed()
         # check if menu key pressed
-        if keyPresses[K_i] == true:
+        if keyPresses[K_i] == True:
             newState=InventoryState
             print "Going to Inventory State"
         # delegate key presses to the current state
