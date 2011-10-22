@@ -13,7 +13,7 @@ from pygame.locals import *
 
 from sprites import MOVE_UNIT
 from view import NONE, UP, DOWN, LEFT, RIGHT, TILE_SIZE, VIEW_WIDTH, VIEW_HEIGHT
-from mapevents import SCENE_TRANSITION, REPLAY_TRANSITION, BOUNDARY_TRANSITION, GAME_OVER_TRANSITION, END_GAME_TRANSITION
+from mapevents import SCENE_TRANSITION, REPLAY_TRANSITION, BOUNDARY_TRANSITION, GAME_OVER_TRANSITION, END_GAME_TRANSITION, INVENTORY_SCREEN_TRANSITION
 
 from eventbus import EventBus
 from registry import Registry
@@ -31,7 +31,7 @@ DIMENSIONS = (VIEW_WIDTH, VIEW_HEIGHT)
 BOUNDARY_TICKS = {UP: 24, DOWN: 24, LEFT: 14, RIGHT: 14}
 DOORWAY_TICKS = {UP: 16, DOWN: 16, LEFT: 16, RIGHT: 16}
 
-pygame.display.set_caption("Ulmo's Adventure")
+pygame.display.set_caption("The Architect")
 screen = pygame.display.set_mode(DIMENSIONS)
 
 blackRect = view.createRectangle(DIMENSIONS)
@@ -157,6 +157,8 @@ class PlayState:
                 return GameOverState(transition)
             if transition.type == END_GAME_TRANSITION:
                 return EndGameState(transition)
+            if transition.type == INVENTORY_SCREEN_TRANSITION:
+                return InventoryGameState(transition)
         # draw the map view to the screen
         self.drawMapView(screen)
         pygame.display.flip()

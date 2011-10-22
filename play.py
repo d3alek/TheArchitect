@@ -27,8 +27,12 @@ def playMain():
                 rpg.states.soundHandler.toggleSound()
         # detect key presses    
         keyPresses = pygame.key.get_pressed()
+        # check if menu key pressed
+        if keyPresses[K_i] == true:
+            newState=InventoryState
+            print "Going to Inventory State"
         # delegate key presses to the current state
-        newState = currentState.execute(keyPresses)
+        else: newState = currentState.execute(keyPresses)
         # flush sounds
         rpg.states.soundHandler.flush()
         # change state if necessary
